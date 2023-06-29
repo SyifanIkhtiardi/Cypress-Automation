@@ -3,7 +3,7 @@ import homepage from '../support/page/homepage';
 import itemDetail from '../support/page/itemDetail';
 import cartPage from '../support/page/cartPage';
 
-describe('Luma web test', () => {
+describe('User Journey', () => {
   let loginAccount;
 
   beforeEach(() => {
@@ -14,7 +14,7 @@ describe('Luma web test', () => {
     })
   })
 
-  it('Verify if Add Montana Wind Jacket to Cart is successful (search bar)', () => {
+  it('A user can find product using search feture and add product to cart', () => {
     const loginObj = new loginPage();
     const homeObj = new homepage();
     const itemDetailObj = new itemDetail();
@@ -22,6 +22,7 @@ describe('Luma web test', () => {
 
     // Login to Luma website
     loginObj.accessLoginPage();
+    cy.location("pathname").should("equal", "/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/")
     loginObj.enterEmail(loginAccount.email);
     loginObj.enterPassword(loginAccount.password);
     loginObj.clickSignInButton();
